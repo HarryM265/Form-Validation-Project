@@ -1,9 +1,6 @@
 //Create form stateful widget
 import 'package:flutter/material.dart';
-
-import 'userModel.dart';
-import 'result.dart';
-import 'textFormField.dart';
+import 'package:form_validation/library.dart';
 
 class ProfileForm extends StatefulWidget {
   @override

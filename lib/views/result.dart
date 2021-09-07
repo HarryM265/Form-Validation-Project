@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'userModel.dart';
+import 'package:form_validation/library.dart';
 
 // ignore: must_be_immutable
 class Result extends StatelessWidget {
@@ -20,19 +20,19 @@ class Result extends StatelessWidget {
           children: <Widget>[
             Text(
               'First Name: ' + model.firstName,
-              style: TextStyle(fontSize: 22),
+              style: TextStyle(fontSize: 18),
             ),
             Text(
               'Last Name: ' + model.lastName,
-              style: TextStyle(fontSize: 22),
+              style: TextStyle(fontSize: 18),
             ),
             Text(
               'DOB: ' + model.dateOfBirth,
-              style: TextStyle(fontSize: 22),
+              style: TextStyle(fontSize: 18),
             ),
             Text(
               'Email: ' + model.email,
-              style: TextStyle(fontSize: 22),
+              style: TextStyle(fontSize: 18),
             ),
             Text(
               'Address: ' +
@@ -43,12 +43,27 @@ class Result extends StatelessWidget {
                   model.suburb +
                   ' ' +
                   model.postcode,
-              style: TextStyle(fontSize: 22),
+              style: TextStyle(fontSize: 18),
             ),
             Text(
               'Password: ' + model.password,
-              style: TextStyle(fontSize: 22),
+              style: TextStyle(fontSize: 18),
             ),
+            Container(
+              alignment: Alignment.center,
+              child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return HomePage();
+                        },
+                      ),
+                    );
+                  },
+                  child: Text('Confirm')),
+            )
           ],
         ),
       ),
