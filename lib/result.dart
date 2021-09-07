@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'userModel.dart';
 
+// ignore: must_be_immutable
 class Result extends StatelessWidget {
   User model;
 
@@ -34,7 +35,14 @@ class Result extends StatelessWidget {
               style: TextStyle(fontSize: 22),
             ),
             Text(
-              'Address: ' + model.postalAdress,
+              'Address: ' +
+                  model.streetNo +
+                  ' ' +
+                  model.streetName +
+                  ' ' +
+                  model.suburb +
+                  ' ' +
+                  model.postcode,
               style: TextStyle(fontSize: 22),
             ),
             Text(

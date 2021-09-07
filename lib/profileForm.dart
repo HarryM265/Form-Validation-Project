@@ -20,7 +20,10 @@ class _ProfileFormState extends State<ProfileForm> {
     lastName: '',
     password: '',
     dateOfBirth: '',
-    postalAdress: '',
+    streetNo: '',
+    streetName: '',
+    suburb: '',
+    postcode: '',
   );
 
   @override
@@ -121,7 +124,7 @@ class _ProfileFormState extends State<ProfileForm> {
                       return null;
                     },
                     onSaved: (String value) {
-                      model.postalAdress = value;
+                      model.streetNo = value;
                     },
                   ),
                 ),
@@ -140,7 +143,7 @@ class _ProfileFormState extends State<ProfileForm> {
                       return null;
                     },
                     onSaved: (String value) {
-                      model.postalAdress = model.postalAdress + value;
+                      model.streetName = value;
                     },
                   ),
                 ),
@@ -167,7 +170,7 @@ class _ProfileFormState extends State<ProfileForm> {
                       return null;
                     },
                     onSaved: (String value) {
-                      model.postalAdress = model.postalAdress + value;
+                      model.suburb = value;
                     },
                   ),
                 ),
@@ -185,9 +188,8 @@ class _ProfileFormState extends State<ProfileForm> {
 
                       return null;
                     },
-                    onSaved: (int value) {
-                      model.postalAdress =
-                          model.postalAdress + value.toString();
+                    onSaved: (String value) {
+                      model.postcode = value;
                     },
                   ),
                 ),

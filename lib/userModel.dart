@@ -3,7 +3,11 @@ class User {
   String lastName;
   String dateOfBirth;
   String email;
-  String postalAdress;
+  //Address rework needs to be done
+  String streetNo;
+  String streetName;
+  String suburb;
+  String postcode;
   String password;
 
   User(
@@ -11,6 +15,9 @@ class User {
       required this.lastName,
       required this.dateOfBirth,
       required this.email,
-      required this.postalAdress,
+      required this.streetNo,
+      required this.streetName,
+      required this.suburb,
+      required this.postcode,
       required this.password});
 }
