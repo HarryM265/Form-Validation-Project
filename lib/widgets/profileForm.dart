@@ -1,6 +1,10 @@
 //Create form stateful widget
 import 'package:flutter/material.dart';
-import 'package:form_validation/library.dart';
+import 'package:form_validation/models/userModel.dart';
+import 'package:form_validation/models/validators.dart';
+import 'package:form_validation/views/result.dart';
+
+import 'myTextFormField.dart';
 
 class ProfileForm extends StatefulWidget {
   @override
@@ -22,6 +26,11 @@ class _ProfileFormState extends State<ProfileForm> {
     suburb: '',
     postcode: '',
   );
+
+  RegExp emailRegEx = new RegExp(validEmailKey);
+  RegExp passwordRegex = new RegExp(validPasswordKey);
+  RegExp numberCheckRegex = new RegExp(checkForNumberKey);
+  RegExp numberCheckL4Regex = new RegExp(checkForNumberL4Key);
 
   @override
   Widget build(BuildContext context) {
@@ -76,9 +85,7 @@ class _ProfileFormState extends State<ProfileForm> {
               if (value.length < 7) {
                 return 'Invalid Date of birth';
               }
-
               _formKey.currentState!.save();
-
               return null;
             },
             onSaved: (String value) {
@@ -89,13 +96,16 @@ class _ProfileFormState extends State<ProfileForm> {
             hintText: 'Email',
             isEmail: true,
             validator: (String value) {
-              bool emailExp = RegExp(
-                      r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                  .hasMatch(value);
-              if (!emailExp) {
-                return 'Please enter a valid email';
+              if (value.isEmpty) {
+                return 'Please enter email';
+              } else {
+                if (!emailRegEx.hasMatch(value)) {
+                  return 'Please enter valid email';
+                } else {
+                  _formKey.currentState!.save();
+                  return null;
+                }
               }
-              return null;
             },
             onSaved: (String value) {
               model.email = value;
@@ -112,12 +122,14 @@ class _ProfileFormState extends State<ProfileForm> {
                   child: MyTextFormField(
                     hintText: 'No',
                     validator: (String value) {
-                      if (value.length > 4) {
-                        return 'Street Number is invalid';
+                      if (value.isEmpty) {
+                        return 'Empty';
+                      } else {
+                        if (!numberCheckRegex.hasMatch(value)) {
+                          return '#';
+                        }
                       }
-
                       _formKey.currentState!.save();
-
                       return null;
                     },
                     onSaved: (String value) {
@@ -134,9 +146,7 @@ class _ProfileFormState extends State<ProfileForm> {
                       if (value.length < 4) {
                         return 'Street Name is invalid';
                       }
-
                       _formKey.currentState!.save();
-
                       return null;
                     },
                     onSaved: (String value) {
@@ -161,9 +171,7 @@ class _ProfileFormState extends State<ProfileForm> {
                       if (value.length < 4) {
                         return 'Suburb is invalid';
                       }
-
                       _formKey.currentState!.save();
-
                       return null;
                     },
                     onSaved: (String value) {
@@ -177,12 +185,14 @@ class _ProfileFormState extends State<ProfileForm> {
                   child: MyTextFormField(
                     hintText: 'Postcode',
                     validator: (String value) {
-                      if (value.length < 4) {
-                        return 'Postcode is invalid';
+                      if (value.isEmpty) {
+                        return 'Please enter postcode';
+                      } else {
+                        if (!numberCheckL4Regex.hasMatch(value)) {
+                          return 'Must be numbers';
+                        }
                       }
-
                       _formKey.currentState!.save();
-
                       return null;
                     },
                     onSaved: (String value) {
@@ -197,31 +207,16 @@ class _ProfileFormState extends State<ProfileForm> {
             hintText: 'Password',
             isPassword: true,
             validator: (String value) {
-              if (value.length < 7) {
-                return 'Password should be minimum 7 characters';
+              if (value.isEmpty) {
+                return 'Please enter password';
+              } else {
+                if (!passwordRegex.hasMatch(value)) {
+                  return 'Please enter valid password';
+                } else {
+                  _formKey.currentState!.save();
+                  return null;
+                }
               }
-
-              _formKey.currentState!.save();
-
-              return null;
-            },
-            onSaved: (String value) {
-              model.password = value;
-            },
-          ),
-          MyTextFormField(
-            hintText: 'Confirm Password',
-            isPassword: true,
-            validator: (String value) {
-              if (value.length < 7) {
-                return 'Password should be minimum 7 characters';
-              } else if (value != model.password) {
-                print(value);
-                print(model.password);
-                return 'Password not matched';
-              }
-
-              return null;
             },
             onSaved: (String value) {
               model.password = value;

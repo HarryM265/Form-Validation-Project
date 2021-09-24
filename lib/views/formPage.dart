@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:form_validation/library.dart';
+import 'package:form_validation/widgets/profileForm.dart';
 
 class FormPage extends StatelessWidget {
   const FormPage({Key? key}) : super(key: key);
@@ -8,7 +8,9 @@ class FormPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Form Validation Project')),
-      body: ProfileForm(),
+      body: ListView(
+        children: [ProfileForm()],
+      ),
     );
   }
 }

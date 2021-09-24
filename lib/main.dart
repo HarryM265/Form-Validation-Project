@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:form_validation/library.dart';
+import 'views/formPage.dart';
 
 void main() {
   //Run the form validaton app
@@ -14,9 +14,7 @@ class FormValidationProject extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         //Fill the screen with the FormPage widget
-        body: ListView(
-          children: [FormPage()],
-        ),
+        body: FormPage(),
       ),
     );
   }
