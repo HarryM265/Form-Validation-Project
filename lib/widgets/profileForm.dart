@@ -119,7 +119,6 @@ class _ProfileFormState extends State<ProfileForm> {
                 //if not valid return Invalid date of birth
                 return 'Invalid Date of birth';
               }
-              _formKey.currentState!.save();
               return null;
             },
             //when saved store the value as the date of birth of the user model
@@ -144,7 +143,6 @@ class _ProfileFormState extends State<ProfileForm> {
                   //if not valid return please enter valid email
                   return 'Please enter valid email';
                 } else {
-                  _formKey.currentState!.save();
                   return null;
                 }
               }
@@ -185,7 +183,6 @@ class _ProfileFormState extends State<ProfileForm> {
                           return '#';
                         }
                       }
-                      _formKey.currentState!.save();
                       return null;
                     },
                     //when saved store the value as the streetNo user model value
@@ -210,7 +207,6 @@ class _ProfileFormState extends State<ProfileForm> {
                         //if not valid return street name is invalid
                         return 'Street Name is invalid';
                       }
-                      _formKey.currentState!.save();
                       return null;
                     },
                     //when saved store the value as user streetname value
@@ -247,7 +243,6 @@ class _ProfileFormState extends State<ProfileForm> {
                         //if the value is less than 4 characters long return suburb is invalid
                         return 'Suburb is invalid';
                       }
-                      _formKey.currentState!.save();
                       return null;
                     },
                     //when saved store the value as the suburb user model value
@@ -278,7 +273,6 @@ class _ProfileFormState extends State<ProfileForm> {
                           return 'Must be numbers';
                         }
                       }
-                      _formKey.currentState!.save();
                       return null;
                     },
                     //when saved store the value as the postcode user model value
@@ -308,7 +302,6 @@ class _ProfileFormState extends State<ProfileForm> {
                   //if invalid return please enter password
                   return 'Please enter valid password';
                 } else {
-                  _formKey.currentState!.save();
                   return null;
                 }
               }
@@ -327,7 +320,6 @@ class _ProfileFormState extends State<ProfileForm> {
             onPressed: () {
               //when button is pressed check if the values are valid
               if (_formKey.currentState!.validate()) {
-                //TODO try removing validate call from above code
                 //if valid store the values
                 _formKey.currentState!.save();
                 //and navigate to the result page
