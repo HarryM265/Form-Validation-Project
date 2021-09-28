@@ -311,6 +311,15 @@ class _ProfileFormState extends State<ProfileForm> {
               model.password = value;
             },
           ),
+          Padding(
+            padding: EdgeInsets.all(12),
+            child: Container(
+              alignment: Alignment.topLeft,
+              child: Text(
+                  'Password must contain at least: 1x a, 1x A, 1x 1, 1x %',
+                  style: TextStyle(fontSize: 12)),
+            ),
+          ),
           //create an elevated button
           ElevatedButton(
             //style the button
